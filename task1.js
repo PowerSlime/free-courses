@@ -1,14 +1,14 @@
 const getLettersFromString = string => {
 	// Regex for matching only numbers and letters from string
-	let regex = /\w/g;
-	let letters = string.match(regex);
+	const regex = /\w/g;
+	const letters = string.match(regex);
 
 	return letters.join('');
 };
 
 
 const isPolindrome = string => {
-	let letters = getLettersFromString(string).toLowerCase();
+	const letters = getLettersFromString(string).toLowerCase();
 
 	for (let i = 0; i < Math.floor(letters.length / 2); i++) {
 		let firstIndex = i;
