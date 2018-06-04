@@ -1,6 +1,6 @@
 const fib = n => {
-	let isNegative = n < 0;
-	let isEven = n % 2 == 0;
+	const isNegative = n < 0;
+	const isEven = n % 2 == 0;
 
 	n = Math.abs(n);  // If it is negative then will make positive
 
