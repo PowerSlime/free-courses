@@ -1,19 +1,19 @@
 const getLettersFromString = string => {
 	// Regex for matching only numbers and letters from string
-	const regex = /\w/g;
-	const letters = string.match(regex);
+	const regex = /[^a-z0-9]/g;
+	// Delete all non-word characters from string
+	const letters = string.toLowerCase().replace(regex, '');
 
-	return letters.join('');
+	return letters;
 };
 
 
 const isPolindrome = string => {
 	const letters = getLettersFromString(string).toLowerCase();
 
-	for (let i = 0; i < Math.floor(letters.length / 2); i++) {
-		let firstIndex = i;
+	for (let firstIndex = 0; firstIndex < Math.floor(letters.length / 2); firstIndex++) {
 		// +1 because we mustn't try to get "out of range" item from array (string)
-		let lastIndex = letters.length - (i + 1);
+		let lastIndex = letters.length - (firstIndex + 1);
 
 		if (letters[firstIndex] !== letters[lastIndex]) {
 			return false;
