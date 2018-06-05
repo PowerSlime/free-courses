@@ -9,7 +9,7 @@ const getLettersFromString = string => {
 
 
 const isPolindrome = string => {
-	const letters = getLettersFromString(string).toLowerCase();
+	const letters = getLettersFromString(string);
 
 	for (let firstIndex = 0; firstIndex < Math.floor(letters.length / 2); firstIndex++) {
 		// +1 because we mustn't try to get "out of range" item from array (string)
