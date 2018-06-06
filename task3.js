@@ -5,14 +5,14 @@ const getMatch = (string, regex) => {
 
 
 const getVowels = string => {
-	const regex = /[aeiouy]/ig;
+	const regex = /[aeiou]/ig;
 
 	return getMatch(string, regex);
 };
 
 
 const getConsonants = string => {
-	const regex = /[bcdfghjklmnpqrstvwxz]/ig;
+	const regex = /[bcdfghjklmnpqrstvwxzy]/ig;
 
 	return getMatch(string, regex);
 };
