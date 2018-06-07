@@ -19,18 +19,31 @@ const getConsonants = string => {
 
 
 const getNumbers = string => {
-	const regex = /[0-9]/ig;
+	const regex = /[0-9]/g;
 
 	return getMatch(string, regex);
 };
 
 
-const formResult = (string) => {
-	const vowels = getVowels(string);
-	const consonants = getConsonants(string);
-	const numbers = getNumbers(string);
+const formResult = string => {
+	const vowels = getVowels(string),
+		consonants = getConsonants(string),
+		numbers = getNumbers(string);
 
-	return [vowels, consonants, numbers].join(' ').trim();
+	const array = [vowels, consonants, numbers];
+	// Clean empty strings
+	// ['aeui', '', '123'] -> ['aeui', '123']
+	//
+	// We need that filter because when we'll use .join(' ') method
+	// with unfiltred array we wi'll get resut like 'aeui  123',
+	// but it must be 'aeui 123'
+	//
+	// Callback function in filter should return boolean value
+	// but we know that empty string by default is equal to 'false'
+	// ex. 'some letters' -> true, '' -> false
+	const filtered = array.filter(item => item);
+
+	return filtered.join(' ').trim();
 };
 
 
