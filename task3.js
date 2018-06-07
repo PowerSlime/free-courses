@@ -35,8 +35,8 @@ const formResult = string => {
 	// ['aeui', '', '123'] -> ['aeui', '123']
 	//
 	// We need that filter because when we'll use .join(' ') method
-	// with unfiltred array we wi'll get resut like 'aeui  123',
-	// but it must be 'aeui 123'
+	// with unfiltred array we wi'll get result like 'aeui  123',
+	// but it must be like 'aeui 123'
 	//
 	// Callback function in filter should return boolean value
 	// but we know that empty string by default is equal to 'false'
