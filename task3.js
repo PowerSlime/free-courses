@@ -1,4 +1,4 @@
-debug = true;
+debug = false;
 
 const getMatch = (string, allownedChars) => {
 	let result = [];
