@@ -4,7 +4,7 @@ const fib = n => {
 	const isNegative = n < 0;
 	const isEven = n % 2 == 0;
 
-	n = isNegative ? n * -1 : n;  // If it is negative then will make positive
+	n = Math.abs(n);  // If it is negative then will make positive
 
 	let [a, b] = [1, 0];
 	while (n-- > 0) {
@@ -23,7 +23,7 @@ if (debug) {
 			// key is input argument
 			// dict[key] is output
 			result = func(key);
-			console.log(result === dict[key] ? 'OK' : `"${key}" must be equal to "${dict[key]}" but it is "${result}"`);
+			console.log(result === dict[key] ? 'OK' : `${key} must be equal to ${dict[key]} but it is ${result}`);
 		}
 	};
 
