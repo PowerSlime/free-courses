@@ -1,30 +1,19 @@
 debug = false;
 
-const getMatch = (string, regex) => {
-	const match = string.match(regex);
-	return match ? match.join(''):'';
-};
+const getMatch = (string, allownedChars) => {
+	let result = [];
+
+	string
+		.split('')
+		.forEach(char => allownedChars.includes(char.toLowerCase()) ? result.push(char) : null);
+
+	return result.join('');
+}
 
 
-const getVowels = string => {
-	const regex = /[aeiouy]/ig;
-
-	return getMatch(string, regex);
-};
-
-
-const getConsonants = string => {
-	const regex = /[bcdfghjklmnpqrstvwxz]/ig;
-
-	return getMatch(string, regex);
-};
-
-
-const getNumbers = string => {
-	const regex = /[0-9]/g;
-
-	return getMatch(string, regex);
-};
+const getVowels = string => getMatch(string, 'aeiouy');
+const getConsonants = string => getMatch(string, 'bcdfghjklmnpqrstvwxz');
+const getNumbers = string => getMatch(string, '0123456789');
 
 
 const formResult = string => {
@@ -57,7 +46,7 @@ if (debug) {
 			// key is input argument
 			// dict[key] is output
 			result = func(key);
-			console.log(result === dict[key] ? 'OK' : `${key} must be equal to ${dict[key]} but it is ${result}`);
+			console.log(result === dict[key] ? 'OK' : `"${key}" must be equal to "${dict[key]}" but it is "${result}"`);
 		}
 	};
 

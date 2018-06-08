@@ -1,19 +1,23 @@
 debug = false;
 
 const getLettersFromString = string => {
-	// Regex for matching only numbers and letters from string
-	const regex = /[^a-z0-9]/g;
-	// Delete all non-word characters from string
-	const letters = string.toLowerCase().replace(regex, '');
+	let result = [];
+	const allownedChars = 'abcdefghijklmnopqrstuvwxyz0123456789';
 
-	return letters;
-};
+	string
+		.toLowerCase()
+		.split('')
+		.forEach(char => allownedChars.includes(char) ? result.push(char) : null);
+
+	return result.join('');
+}
 
 
 const isPolindrome = string => {
 	const letters = getLettersFromString(string);
 
-	for (let firstIndex = 0; firstIndex < Math.floor(letters.length / 2); firstIndex++) {
+	// parseInt(3.14) -> 3, as parseInt("3.14")
+	for (let firstIndex = 0; firstIndex < parseInt(letters.length / 2); firstIndex++) {
 		// +1 because we mustn't try to get "out of range" item from array (string)
 		let lastIndex = letters.length - (firstIndex + 1);
 
@@ -35,7 +39,7 @@ if (debug) {
 			// key is input argument
 			// dict[key] is output
 			result = func(key);
-			console.log(result === dict[key] ? 'OK' : `${key} must be equal to ${dict[key]} but it is ${result}`);
+			console.log(result === dict[key] ? 'OK' : `"${key}" must be equal to "${dict[key]}" but it is "${result}"`);
 		}
 	};
 
