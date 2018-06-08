@@ -1,3 +1,5 @@
+debug = false;
+
 const getMatch = (string, regex) => {
 	const match = string.match(regex);
 	return match ? match.join(''):'';
@@ -46,6 +48,27 @@ const formResult = string => {
 	return filtered.join(' ').trim();
 };
 
+if (debug) {
+	const checkResult = (func, input, output) => func(input) === output;
+	const runTest = (func, dict, header) => {
+		header ? console.log(header) : null;
+		let result = null;
+		for (let key in dict) {
+			// key is input argument
+			// dict[key] is output
+			result = func(key);
+			console.log(result === dict[key] ? 'OK' : `${key} must be equal to ${dict[key]} but it is ${result}`);
+		}
+	};
 
-const string = process.argv[2];  // String from CLI
-process.stdout.write(formResult(string));
+	runTest(formResult, {
+		'Hello World!': 'eoo HllWrld',
+		'ae1': 'ae 1',
+		'__--$': '',
+		'123dc1': 'dc 1231'
+	}, 'formResult');
+
+} else {
+	const string = process.argv[2];  // String from CLI
+	process.stdout.write(formResult(string));
+}
